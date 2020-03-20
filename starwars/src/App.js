@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import styled from "styled-components";
 import CardGrid from "./components/CardGrid";
 
+//Style
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Button = styled.button`
+background: black;
+color: yellow;
+height: 50px;
+width: 125px;
+`;
+
+//Function
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -38,8 +55,10 @@ const changePage = newURL => setURL(newURL);
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <button onClick={() => changePage(prevURL)}>Prev Page</button>
-      <button onClick={() => changePage(nextURL)}>Next Page</button>
+      <ButtonContainer>
+      <Button onClick={() => changePage(prevURL)}>Prev Page</Button>
+      <Button onClick={() => changePage(nextURL)}>Next Page</Button>
+      </ButtonContainer>
       <CardGrid characters={characters} />
     </div>
   );
